@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.jsworld.lottoproject.ui.view.main.MainViewModel" />
+
+        <import type="android.view.View" />
+        <import type="com.jsworld.lottoproject.util.StringExt" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:orientation="horizontal"
+                    app:layout_collapseMode="pin"
+                    >
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:text="@string/app_name"/>
+
+                </com.google.android.material.appbar.MaterialToolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/layout_weeks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    >
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weeks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@{@string/new_weeks(vm.weeksLottoData.drwNo)}"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@{@string/new_wees_data(vm.weeksLottoData.drwNoDate)}"
+                        android:textSize="16dp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weeks_first_number"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="3dp"
+                        android:padding="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@{vm.weeksLottoData.drwtNo1 == 0 ? `-` : Integer.toString(vm.weeksLottoData.drwtNo1)}"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weeks_second_number"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="3dp"
+                        android:padding="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@{vm.weeksLottoData.drwtNo2 == 0 ? `-` : Integer.toString(vm.weeksLottoData.drwtNo2)}"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weeks_third_number"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="3dp"
+                        android:padding="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@{vm.weeksLottoData.drwtNo3 == 0 ? `-` : Integer.toString(vm.weeksLottoData.drwtNo3)}"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weeks_fourth_number"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="3dp"
+                        android:padding="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@{vm.weeksLottoData.drwtNo4 == 0 ? `-` : Integer.toString(vm.weeksLottoData.drwtNo4)}"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weeks_fifth_number"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="3dp"
+                        android:padding="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@{vm.weeksLottoData.drwtNo5 == 0 ? `-` : Integer.toString(vm.weeksLottoData.drwtNo5)}"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weeks_sixth_number"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="3dp"
+                        android:padding="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@{vm.weeksLottoData.drwtNo6 == 0 ? `-` : Integer.toString(vm.weeksLottoData.drwtNo6)}"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="20dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/new_weeks_plus"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weeks_bnus_number"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="3dp"
+                        android:padding="10dp"
+                        android:gravity="center_horizontal"
+                        android:text="@{vm.weeksLottoData.bnusNo == 0 ? `-` : Integer.toString(vm.weeksLottoData.bnusNo)}"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="@string/weeks_num_empty"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:visibility="@{vm.weeksLottoData.returnValue ? View.GONE : View.VISIBLE}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}"
+                    android:text="@{@string/new_weeks_first_winamnt(StringExt.INSTANCE.formattedStringPrice(vm.weeksLottoData.firstAccumamnt), vm.weeksLottoData.firstPrzwnerCo)}"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:visibility="@{vm.weeksLottoData.returnValue ? View.VISIBLE : View.GONE}"
+                    android:text="@{@string/new_first_accumamnt(StringExt.INSTANCE.formattedStringPrice(vm.weeksLottoData.firstWinamnt))}"
+                    />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_first_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text='@{vm.lottoNumber.size() != 0 ? vm.lottoNumber.get(0).toString() : "-"}'
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_second_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text='@{vm.lottoNumber.size() != 0 ? vm.lottoNumber.get(1).toString() : "-"}'
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_third_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text='@{vm.lottoNumber.size() != 0 ? vm.lottoNumber.get(2).toString() : "-"}'
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_fourth_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text='@{vm.lottoNumber.size() != 0 ? vm.lottoNumber.get(3).toString() : "-"}'
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_fifth_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text='@{vm.lottoNumber.size() != 0 ? vm.lottoNumber.get(4).toString() : "-"}'
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sixth_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text='@{vm.lottoNumber.size() != 0 ? vm.lottoNumber.get(5).toString() : "-"}'
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_number"
+            >
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    >
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_main"
+                        android:theme="@style/TextInputLayoutStyle"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="4"
+                        app:errorEnabled="true"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_search_weeks"
+                            android:theme="@style/TextInputLayoutStyle"
+                            style="@style/TextInputEditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:imeOptions="actionSearch"
+                            android:hint="회차 검색" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_search_weeks"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:inputType="number"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"
+                        android:hint="@string/search_num"
+                        android:textColorHint="@color/gray_bbb"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/gray_text"
+                        android:textSize="18dp"
+                        />
+                        -->
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}"
+                    >
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginTop="10dp"
+                            android:onClick="@{() -> vm.hideSearchLottoNum()}"
+                            android:src="@drawable/xicon"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/layout_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            >
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_search"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="@{@string/new_weeks(vm.searchLottoData.drwNo)}"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="@{@string/new_wees_data(vm.searchLottoData.drwNoDate)}"
+                                android:textSize="16dp" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_search_first_number"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="3dp"
+                            android:padding="10dp"
+                            android:gravity="center_horizontal"
+                            android:text="@{vm.searchLottoData.drwtNo1 == 0 ? `-` : Integer.toString(vm.searchLottoData.drwtNo1)}"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_search_second_number"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="3dp"
+                            android:padding="10dp"
+                            android:gravity="center_horizontal"
+                            android:text="@{vm.searchLottoData.drwtNo2 == 0 ? `-` : Integer.toString(vm.searchLottoData.drwtNo2)}"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_search_third_number"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="3dp"
+                            android:padding="10dp"
+                            android:gravity="center_horizontal"
+                            android:text="@{vm.searchLottoData.drwtNo3 == 0 ? `-` : Integer.toString(vm.searchLottoData.drwtNo3)}"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_search_fourth_number"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="3dp"
+                            android:padding="10dp"
+                            android:gravity="center_horizontal"
+                            android:text="@{vm.searchLottoData.drwtNo4 == 0 ? `-` : Integer.toString(vm.searchLottoData.drwtNo4)}"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_search_fifth_number"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="3dp"
+                            android:padding="10dp"
+                            android:gravity="center_horizontal"
+                            android:text="@{vm.searchLottoData.drwtNo5 == 0 ? `-` : Integer.toString(vm.searchLottoData.drwtNo5)}"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_search_sixth_number"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="3dp"
+                            android:padding="10dp"
+                            android:gravity="center_horizontal"
+                            android:text="@{vm.searchLottoData.drwtNo6 == 0 ? `-` : Integer.toString(vm.searchLottoData.drwtNo6)}"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="20dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center_horizontal"
+                            android:text="@string/new_weeks_plus"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_search_bnus_number"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="3dp"
+                            android:padding="10dp"
+                            android:gravity="center_horizontal"
+                            android:text="@{vm.searchLottoData.bnusNo == 0 ? `-` : Integer.toString(vm.searchLottoData.bnusNo)}"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}"
+                        android:text="@{@string/new_weeks_first_winamnt(StringExt.INSTANCE.formattedStringPrice(vm.searchLottoData.firstAccumamnt), vm.searchLottoData.firstPrzwnerCo)}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:visibility="@{vm.searchLottoData.returnValue ? View.VISIBLE : View.GONE}"
+                        android:text="@{@string/new_first_accumamnt(StringExt.INSTANCE.formattedStringPrice(vm.searchLottoData.firstWinamnt))}"
+                        />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/underline_title"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    >
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="@color/gray_text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_qrcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/gray_text"
+                        android:textSize="18dp"
+                        android:text="@string/qr_code"
+                        android:onClick="@{() -> vm.startQRCode()}"
+                        />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_gravity="end"
+            android:src="@drawable/baseline_reorder_black_48"
+            android:onClick="@{() -> vm.getNumber()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_gravity="end"
+            android:src="@drawable/baseline_reorder_black_48"
+            android:onClick="@{() -> vm.saveLottoNum()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fab_1"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

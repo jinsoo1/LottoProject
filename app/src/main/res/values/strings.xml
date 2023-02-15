@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">LottoProject</string>
+
+    <string name="save_number">저장번호 확인</string>
+
+    <string name="new_weeks">%d 회차 </string>
+    <string name="new_wees_data">( %s )</string>
+    <string name="new_weeks_number">최신주차 번호 : </string>
+    <string name="new_weeks_plus">+</string>
+    <string name="new_weeks_first_winamnt">총 당첨금 : %s원 (당첨 복권수 %s개)</string>
+    <string name="new_first_accumamnt">1등당 당첨금 : %s원</string>
+
+    <string name="weeks_num_empty">오늘은 추첨일입니다.</string>
+    <string name="search_num">회차 검색</string>
+    <string name="qr_code">QR코드 입력</string>
+
+    <string name="lotto_title">동행복권</string>
+    <string name="lotto_title2">회차 입니다.</string>
+    <string name="lotto_move">확인하러 가시겠습니까?</string>
+    <string name="lotto_confirm">확인</string>
+    <string name="lotto_cancel">취소</string>
+</resources>
