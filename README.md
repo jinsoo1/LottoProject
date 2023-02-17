@@ -9,5 +9,6 @@
 * Platform : Android
 * Language : Kotlin
 * DataBase : Room(사용예정)
-* Library : retrofit, DataBinding, zxing(QRcode)
+* Library : retrofit, DataBinding, zxing(QRcode), coroutine
+* DI : Hilt
 * Pattern : MVVM, Repository
